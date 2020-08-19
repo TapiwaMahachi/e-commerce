@@ -1,41 +1,50 @@
-import React from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import SearchIcon from "@material-ui/icons/Search";
 
 import "./Header.css";
 import { useStateValue } from '../StateProvider';
+import {auth} from '../firebase';
 
 
 
 function Header() {
 
-  //basket
-  const [{basket}]= useStateValue();
-
+  //basket context
+  const [{basket, user}]= useStateValue();
+  const inputFocus = useRef();
+  const [isFocus, setFocus] = useState(false);
   //getting the quantity from the basket of each product
  const quantity = basket.map(prod => prod.quantity)
-                        .reduce((acc, init) =>acc +init,0);
+                        .reduce((qty, init) =>qty +init,0);
 
-    console.log("Basket : " ,quantity)
-  
+    useEffect(()=>{
+      if(isFocus){
+        inputFocus.current.focus();
+      }
+    }, [isFocus]);
+
     return (
       <nav className="header">
         <Link to="/"  className="nav__link">
           <div className="header__logo">
-            <span>AfreX</span>
+            <h2>Afrex</h2>
           </div>
         </Link>
-        <div className="header__search">
-          
-          <input className="header__input" type="text"></input>
-          <SearchIcon className="header__searchIcon" />
-        </div>
+        <form className="search">
+          <div className="header__search" ref={inputFocus} tabIndex ="-1" >
+            <input className="input" type="text" onClick={()=>setFocus(!isFocus)}></input>
+            <div className="header__searchRight">
+              <SearchIcon className="searchIcon"  />
+            </div> 
+          </div>
+        </form>
         <div className="nav__left">
-          <Link to="/login" className="nav__link">
-            <div className="nav__option">
-              <span className="nav__optionOne">Hello Tapiwa</span>
-              <span className="nav__optionTwo">Sign in</span>
+          <Link to={!!user ? '/': "/login"} className="nav__link">
+            <div className="nav__option" onClick={!!user ? () =>auth.signOut() : ()=>{}}>
+              <span className="nav__optionOne">Hello {user?.displayName || user?.email }</span>
+              <span className="nav__optionTwo">{!!user ?'Sign out': 'Sign in'}</span>
             </div>
           </Link>
           <Link to="/" className="nav__link">
@@ -45,11 +54,13 @@ function Header() {
             </div>
           </Link>
           <Link to="/cart" className="nav__link">
-            <div className="nav__optionShoppingCart">
-              <ShoppingCartOutlinedIcon  className="nav__shoppingCart"/>
-               <span className="nav__optionTotal">
+            <div className="nav__container">
+              <div className="nav__optionShoppingCart">
+                <ShoppingCartOutlinedIcon className="nav__shoppingCart" />
+                <span className="nav__optionTotal">
                   {quantity}
-               </span>
+                </span>
+              </div>
             </div>
           </Link>
         </div>

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import {useState, useRef,useEffect} from "react"
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import { Slider } from "@material-ui/core";
+
 
 
 const Arrow =({direction, handleClick}) =>{
@@ -38,14 +38,15 @@ const Arrow =({direction, handleClick}) =>{
         </div>
     )
 }
-const Slide = ({image}) =>(
+const Slide = ({image, width}) =>(
      <Link to="/"
            css={css`
            background-image: url('${image}');
            background-repeat: no-repeat;
            background-size: cover;
            background-position: center;
-           width: 100%;
+           mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,1), rgba(0,0,0,0),rgba(0,0,0,0));
+           width: ${width}px;
            height: 100%;
            object-fit: contain;
            `} />
@@ -64,13 +65,6 @@ const Slide = ({image}) =>(
              {props.children}
             </div>
         )
-/*
-const SliderContent = styled.div`
-             transform: translateX(-${props => props.translate}px);
-             transition: ease-out ${props => props.transition}s;
-             display: flex;
-             height: 100%;
-             width: ${props => props.width}px;`*/
 
 const getWidth = () => window.innerWidth;
 /**
@@ -127,11 +121,11 @@ const getWidth = () => window.innerWidth;
             window.removeEventListener('transitionend',transitionEnd);
             window.removeEventListener('resize', onResize);
         }
-    },[])
+    },[props.autoPlay])
 
     useEffect(()=>{
         if(transition ===0) setState({...state, transition: 0.45})
-    },[transition])
+    },[transition, state])
 
     const handleResize =() =>{
         setState({...state, translate: getWidth(), transition:0})
@@ -180,19 +174,14 @@ const getWidth = () => window.innerWidth;
             transition={transition}
             translate={translate}
             >
-             {_slides.map((_slide, i )=> (<Slide width={getWidth} key={_slide + i} image={_slide} />))}
+             {_slides.map((_slide, i )=> (<Slide width={getWidth()} key={_slide + i} image={_slide} />))}
             </SliderContent>
             <Arrow direction ={'left'} handleClick={nextSlide} />
              <Arrow direction={'right'} handleClick={prevSlide}/>
          </div>
      )
  }
- //why this
- Slider.defaultProps ={
-     slides: [],
-     autoPlay: null,
- }
-
+ 
 const CarouselCSS =css`
     height: 100vh;
     width: 100vw;

@@ -5,7 +5,7 @@ import "./Home.css";
 function HomeCategory({data}) {
     return (
         <div className="home__category">
-            <Link className="category__link" to="/product_list">
+            <Link className="category__link" to={`/product_list/${data.title}`}>
                 <div className="category__container">
                     <h3 className="category__header">{data.title}</h3>
                     <img className="category__img" src={data.image} alt=''></img>

@@ -1,3 +1,4 @@
+
 export const initialState ={
     basket: [],
     user: null,
@@ -7,9 +8,16 @@ export const initialState ={
    basket?.reduce((amount, prod) => (prod.price * prod.quantity) + amount, 0);
 
 function reducer(state, action) {
+        
+        if(action.type === "SET_USER"){
+           
+            return {
+                ...state,
+                user: action.user,
+            }
+        }
 
         if(action.type === "ADD_TO_CART"){
-
               //check if the id matches and edit the quantity
               const found = state.basket.find(prod => prod.id === action.payload.id)
                 console.log("Same id product: ", found )
@@ -30,7 +38,8 @@ function reducer(state, action) {
             const updated = state.basket.filter(prod => prod.id !== action.payload)
             return{...state, basket: updated}
         }
-                
+        
+     
 }
 export default reducer;
 

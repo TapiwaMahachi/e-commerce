@@ -6,12 +6,12 @@ export const CATEGORY_DATA = [
     },
     {
         image: "https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2019/July/amazonbasics_520x520._SY304_CB442725065_.jpg"
-        , title: "Computer & Accecsories",
+        , title: "Computers",
         subtitle: "see more"
     },
     {
         image: "https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2020/May/Dashboard/Fuji_Dash_Deals_1x._SY304_CB430401028_.jpg"
-        , title: "Deals & Promotions",
+        , title: "Promotions",
         subtitle: "see more"
     },
     {

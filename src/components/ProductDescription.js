@@ -39,7 +39,7 @@ function ProductDescription() {
     useEffect(() =>{
       //search the product
       //this method is faster
-     const unsubscribe = db.collection('products').onSnapshot(snapshot =>
+     const unsubscribe = db.collection('stock').onSnapshot(snapshot =>
         setProduct(snapshot.docs.map(doc => 
             ({id: doc.id, ...doc.data()}))
             .filter(data => id ===data.id)));
@@ -87,7 +87,7 @@ function ProductDescription() {
                 </span>
           <div className="productDescription__price">
             <small>{`$`}</small>
-            <h3>{product[0].price}</h3>
+            <span>{product[0].price}</span>
           </div>
           <span className="productDescription__rating">
             {Array(product[0].rating)
@@ -106,10 +106,10 @@ function ProductDescription() {
         <h3>{product[0].price}</h3>
         <h3>arrival Date : enter date her</h3>
         <div>
-          {product[0].inStock ? <h3 className="inStock">In Stock.</h3> : <h3 className="outOfStock">Out of stock.</h3> }
+          {product[0].stocked ? <h3 className="inStock">In Stock.</h3> : <h3 className="outOfStock">Out of stock.</h3> }
         </div>
         <Quantiy id={id} quantity={adjustQuantity}/>
-        <button className="add__toCart" disabled={!product[0].inStock} onClick={addToCart}>
+        <button className="add__toCart" disabled={!product[0].stocked} onClick={addToCart}>
           Add to shopping cart
         </button>
         <button className="add__toWishList">Add to Wish List</button>

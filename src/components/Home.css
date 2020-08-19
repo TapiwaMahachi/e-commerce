@@ -1,7 +1,6 @@
 .home__categories{
     margin-top: -470px;
-    z-index: 10;
-    border: 1px solid green;
+    z-index: 1;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -25,7 +24,7 @@
 .home__category{
     width: 350px;
     z-index: 1;
-    border: 1px solid rgb(184, 178, 178);
+    border: 1px solid rgb(231, 228, 228);
     margin: .5em;
     border-radius: 4px;
     height: 100%;
