@@ -5,6 +5,7 @@ import "./ProductList.css";
 import { useParams, useHistory } from 'react-router-dom';
 /**@jsx jsx */
 import {css , jsx} from '@emotion/core';
+import ProductCard from './ProductCard';
 
 function ProductList() {
     
@@ -30,18 +31,19 @@ function ProductList() {
             history.push('/');
    }
     const productList = products.map((product) => 
-            <Product
+            <ProductCard
                 product={product.data}
                 key={product.id}
                 id ={product.id}
             />
             );          
     return (
-        <div>
+        <div className="products">
             {products.length ?( 
                 <div>
-                <div className="main">
+                <div className="products__department">
                     <h2>{category} Department </h2>
+                    <p>Shop Laptops, Desktops,accessories and more </p> 
                 </div> 
                 <hr/>
                        <ul className="product__list">

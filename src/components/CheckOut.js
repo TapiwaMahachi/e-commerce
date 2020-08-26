@@ -10,6 +10,7 @@ import ShippingAddress from './ShippingAddress';
 import ViewOrder from './ViewOrder';
 import Payment from './Payment';
 import Copyright from './Copyright';
+import  StripePayment  from "./StripePayment";
 
 
 const steps = ['Shipping Address', 'Your Order','Payment Details',];
@@ -28,7 +29,7 @@ function CheckOut() {
       case 1:
         return <ViewOrder />
       case 2:
-        return <Payment />
+        return <StripePayment />
       default:
         return "Error"
     }
@@ -56,18 +57,20 @@ function CheckOut() {
                   onClick={() => history.push('/')}
                 >
                   Continue Shopping
-            </Button>
+                </Button>
               </>
             ) : (
                 <>
                   {update(activeStep)}
                   <div className="checkout__buttons">
-                    {activeStep !== 0 && (<Button
-                      className={classes.btn}
-                      onClick={() => setActiveStep(activeStep - 1)}
-                    >
-                      Back
-                    </Button>)}
+                    {
+                      activeStep !== 0 && (<Button
+                        className={classes.btn}
+                        onClick={() => setActiveStep(activeStep - 1)}
+                      >
+                        Back
+                      </Button>)
+                    }
                     <Button
                       className={classes.btn}
                       color='primary'

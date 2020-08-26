@@ -1,9 +1,20 @@
+.products{
+    background-color:white;
+    height: 100%;
+}
+.products__department >h2 {
+   margin-bottom: .1em;
+}
+.products__department{
+    padding-left: 1em;
+}
 .product__list{
     display: flex;
     flex-wrap: wrap;
     padding-left: 0;
     justify-content: center;
 }
+
 .prod__list{
     background-color: #635463;
     padding: .5em;
