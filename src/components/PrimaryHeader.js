@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
         position: 'sticky',
         top: 0,
         zIndex: 100,
+        width: '100%',
     },
     menuButton: {
         marginRight: theme.spacing(2),

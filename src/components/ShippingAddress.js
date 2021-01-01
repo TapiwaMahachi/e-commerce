@@ -23,7 +23,7 @@ function ShippingAddress() {
             <form className="shipping__form">
                 <Grid container spacing={3} >
                     {fields.map( field =>
-                     <Grid item small={12} xs={6}>
+                     <Grid item small={12} xs={6} key={field.name}>
                         <TextField
                             key ={field.name}
                             name={field.name}

@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {CardElement , useStripe, useElements} from '@stripe/react-stripe-js';
-import { Button } from '@material-ui/core';
 import {makeStyles} from '@material-ui/core'
+import './StripePayment.css'
 
 //styling for the card
 const CARD_OPTIONS = {
@@ -27,6 +27,7 @@ const CARD_OPTIONS = {
       iconColor: "red",
       color: "red",
     },
+    hidePostalCode: true,
   },
 };
 
@@ -34,10 +35,6 @@ const useStyles = makeStyles((theme) =>({
     form:{
         margin: '10px',
     },
-    btn: {
-        marginTop: theme.spacing(3),
-        fontSize: '16px',
-    }
 }))
 
 function StripePayment() {
@@ -61,7 +58,7 @@ function StripePayment() {
 
         if(!stripe || !elements){
             //Stripe.js has not loaded yet. make sure to disable
-            //form submissin until stripe.js is loaded
+            //form submission until stripe.js is loaded
             return;
         }
         if(error){
@@ -72,7 +69,7 @@ function StripePayment() {
             setProcessing(true);
         }
       
-        //use cardelemt wiht the stripe.js
+        //use cardelemt with the stripe.js
         const payload = await stripe.createPaymentMethod({
             type: 'card',
             card: elements.getElement(CardElement),

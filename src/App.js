@@ -17,7 +17,7 @@ import PrimarySearchAppBar from './components/PrimaryHeader';
 import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
 
-//calling the loadstripe outside so that it doesnt recreated within the render method
+//calling the loadstripe outside so that it doesnt get recreated within the render method
 const stripePromise = loadStripe(
   "pk_test_51HJoESII0yj6l4QXQX2TiROiul1OOVLhqzN372vvzqdVr5qlKtqS6RyMyHzjKoQwyJZsjXXtzxO9CQmNm5xAF0Ci00qECARoyF"
 );
@@ -77,7 +77,8 @@ const  App =()=> {
               <Footer />
             </Route>
             <Route path="/">
-              <PrimarySearchAppBar />
+             {/*<PrimarySearchAppBar />*/} 
+             <Header/>
               <Home />
               <Footer />
             </Route>

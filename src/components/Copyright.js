@@ -24,10 +24,10 @@ function Copyright() {
         return (
         <Typography className={classes.copyright} variant="body2" align="center" color="textSecondary">
                 <Link className={classes.link} to="/">
-                    <p className="footer__subtitle">Privacy policy</p>
+                    <span className="footer__subtitle">Privacy policy</span>
                 </Link>
                 <Link className={classes.link} to="/">
-                    <p className="footer__subtitle">Terms & Conditions</p>
+                    <span className="footer__subtitle">Terms & Conditions</span>
                 </Link>
                 {'Copyright © '}
                 <Link to="/" className={classes.link}>
