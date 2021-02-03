@@ -1,10 +1,7 @@
-import {useEffect, useState} from 'react'
-import Product from "./Product"
+import React , {useEffect, useState} from 'react'
 import { db } from "../firebase";
 import "./ProductList.css";
 import { useParams, useHistory } from 'react-router-dom';
-/**@jsx jsx */
-import {css , jsx} from '@emotion/core';
 import ProductCard from './ProductCard';
 
 function ProductList() {
@@ -15,18 +12,19 @@ function ProductList() {
 
     //getting the category from the url
     const {category} = useParams();
+    console.log(category)
+    console.log(products)
     
     useEffect(() => {
       //searching products based on category
         const unsubscribe = db.collection('stock').onSnapshot(snapshot =>{
             setProducts(snapshot.docs.map(doc => (
                 {id: doc.id, data: doc.data()}
-            )).filter(prod => prod.data.category === category));
-        });
+            )).filter(prod => prod.data.category === category)
+        )});
         return () =>unsubscribe;
     },[category]);
-    
-   const ht = window.innerHeight;
+  
    const handleclick = () =>{
             history.push('/');
    }
@@ -38,44 +36,28 @@ function ProductList() {
             />
             );          
     return (
-        <div className="products">
-            {products.length ?( 
-                <div>
-                <div className="products__department">
-                    <h2>{category} Department </h2>
-                    <p>Shop Laptops, Desktops,accessories and more </p> 
-                </div> 
-                <hr/>
-                       <ul className="product__list">
-                         {productList}
-                        </ul> </div>) : (
-                            <div css={
-                                css`
-                                height: ${ht}px;
-                                `
-                            } >
-                                <div
-                                css={
-                                    css`
-                                     justify-content: center;
-                                     margin:  0 40em;
-                                     margin-top: 15em;
-                                     position: relative
-                                     padding: 0 2em;
-                                     
-                                    `
-                                }
-                                >
-                            <h3> Under construction........ </h3>
-                            <button className="prod__list"  onClick={handleclick}> Please continue to Home Page</button>
-                                </div>
-                                
-                            </div>
+        <section className="products">
+            {
+            products.length ?
+            ( 
+             <div>
+                 <div className="products__department">
+                     <h2>{category} Department </h2>
+                       <p>Shop Laptops, Desktops,accessories and more </p> 
+                 </div> 
+                  <hr/>
+                 <ul className="product__list"> {productList}</ul>
+            </div>
+              ) : (
+                    <div className="no__product" >
+                      <h3> Under construction........ </h3>
+                       <button className="prod__list"  onClick={handleclick}> Please continue to Home Page</button>
+                     </div>   
                             
-                        )
+                     )
             }
             
-        </div>
+        </section>
        
     )
 }

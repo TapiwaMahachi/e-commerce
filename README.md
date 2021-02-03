@@ -1,16 +1,16 @@
 This project was built as Educational Project using e-commerce websites
 
-## languaages and frameworks used
+## Tech Stacks Used
 
-HTML 
+React
+JavaScript
 CSS
-Javascript
-ReactJS
+FIrebase
 MaterialUi 
 
 ## Backend 
 
-Firebase - firestore for handling data and authentication
+Firebase - firestore  data and authentication
 
 ## deployment and hosting 
 

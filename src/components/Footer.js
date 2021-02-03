@@ -1,5 +1,5 @@
 import React from 'react';
-import "./Footer.css";
+import '../css/_footer.scss';
 import {Link} from 'react-router-dom';
 import Copyright from './Copyright';
 
@@ -7,7 +7,7 @@ import Copyright from './Copyright';
 
 function Footer() {
     return (
-        <footer>
+        <footer className="footer">
             <div className="footer__container">
                 <div className="footer__card" >
                     <h3 className="footer__title">About</h3>

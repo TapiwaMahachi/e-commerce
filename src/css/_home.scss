@@ -1,0 +1,93 @@
+@import "variables.scss";
+
+.home{
+    min-height: 100vh;
+    margin-bottom: 5rem;
+
+   &__categories{
+    margin-top: -470px;
+    z-index: 1;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    }
+
+    &__corousel > img{
+        z-index: -1;
+        width: 100%;
+        object-fit: contain;
+    }
+    &__corousel{
+        z-index: -1;
+    }
+    
+    &__image{
+        width: 270px;
+        height: 200px;
+        vertical-align: middle;
+        object-fit: contain;
+    }
+}
+.category{
+    width: 350px;
+    z-index: 1;
+    border: 0;
+    margin: .5em;
+    border-radius: 5px;
+    height: 100%;
+    position: relative;  
+        
+        
+    &__link{
+        text-decoration: none;
+        color: rgb(46, 46, 177);  
+    }
+
+    &__img{
+        width: 350px;
+        height: 280px;
+        object-fit: contain;
+    }
+    &__container{
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        border-radius: 5px;
+    }
+    &__header, &__footer {
+        background-color: white;
+        margin: 0;
+        padding: .5em;
+    }
+}
+.topsellers__title{
+    display: flex;
+    flex-direction: row;
+}
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  justify-content: center;
+  width: auto;
+  margin-top: 40px;
+  padding: 16px;
+  color: rgb(233, 19, 19);
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import SearchIcon from "@material-ui/icons/Search";
 
-import "./Header.css";
+import '../css/_header.scss';
 import { useStateValue } from '../StateProvider';
 import {auth} from '../firebase';
 
@@ -26,21 +26,21 @@ function Header() {
     }, [isFocus]);
 
     return (
-      <nav className="header">
+      <nav className="nav flex">
         <Link to="/"  className="nav__link">
-          <div className="header__logo">
+          <div className="nav__logo">
             <h2>Afrex</h2>
           </div>
         </Link>
         <form className="search">
-          <div className="header__search" ref={inputFocus} tabIndex ="-1" >
+          <div className="nav__search" ref={inputFocus} tabIndex ="-1" >
             <input className="input" type="text" onClick={()=>setFocus(!isFocus)}></input>
             <div className="header__searchRight">
               <SearchIcon className="searchIcon"  />
             </div> 
           </div>
         </form>
-        <div className="nav__left">
+        <div className="nav__left flex">
           <Link to={!!user ? '/': "/login"} className="nav__link">
             <div className="nav__option" onClick={!!user ? () =>auth.signOut() : ()=>{}}>
               <span className="nav__optionOne">Hello {user?.displayName || user?.email }</span>

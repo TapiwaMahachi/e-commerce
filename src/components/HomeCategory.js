@@ -1,15 +1,15 @@
 import React from 'react'
 import {Link} from "react-router-dom";
-import "./Home.css";
+import "../css/_home.scss";
 
 function HomeCategory({data}) {
     return (
-        <div className="home__category">
+        <div className="category">
             <Link className="category__link" to={`/product_list/${data.title}`}>
                 <div className="category__container">
-                    <h3 className="category__header">{data.title}</h3>
+                    <h2 className="category__header">{data.title}</h2>
                     <img className="category__img" src={data.image} alt=''></img>
-                    <span className="category__footer">{data.subtitle}</span>
+                    <p className="category__footer">{data.subtitle}</p>
                 </div>
             </Link>
         </div>

@@ -1,0 +1,35 @@
+@import "variables";
+
+*,
+*::after,
+*::before{
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: rgb(221, 219, 219);
+  font-family: $ff;
+  line-height: 1.6;
+}
+
+h1{
+  font-weight: $fw-bold;
+  font-size: $font-lrg;
+}
+h2{
+  font-weight: $fw-reg;
+  font-size: $font-lrg;
+}
+h3, p{
+  font-weight: $fw-reg;
+  font-size: $font-med;
+}
+
+//flex
+.flex{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}

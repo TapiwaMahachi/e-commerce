@@ -1,5 +1,5 @@
 import React from 'react'
-import "./Home.css";
+import "../css/_home.scss"
 import HomeCategory from './HomeCategory';
 import {CATEGORY_DATA} from "../homedata";
 //import HomeTopSeller from './HomeTopSeller';
@@ -17,14 +17,6 @@ function Home() {
             <HomeCategory data={val} key={index} />
           ))}
         </div>
-        {/**
-         * <div className="home__topsellers">
-          {TOPSELLER_DATA.map((val, index) => (
-            <HomeTopSeller data={val} key={index} />
-          ))}
-        </div>
-         */}
-        
       </div>
     );
 }
