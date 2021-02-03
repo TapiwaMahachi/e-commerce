@@ -1,0 +1,54 @@
+@import "variables";
+
+.products{
+
+   
+    &__department{
+        padding: 1em;
+
+        h2, p{
+            margin-bottom: .2em;
+            color: $color-primary;
+        }
+    }
+    .product__list{
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0;
+        margin: 0 1em 2em;
+        justify-content: center;
+    }
+ //when theres no product btn
+    .prod__list{
+        background-color: $color-primary;
+        padding: 1em;
+        line-height: 1.4;
+        margin:1em 0;
+        border-radius: 5px;
+        border: 0;
+        cursor: pointer;
+        font-size: $font-med;
+        color: white;
+        font-weight: 600;
+
+        &:hover{
+            transform: scale(1.1);
+            transition: ease-in-out 250ms;
+        }
+    }
+    .no__product{
+        display: flex;
+        flex-direction: column;
+        margin: 15em auto;
+        width: 40%;
+        padding: 1em 0;
+        border: 2px solid $color-primary;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+
+        h1{
+            color: $color-primary;
+        }
+    }
+}

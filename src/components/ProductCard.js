@@ -8,16 +8,20 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Rating from '@material-ui/lab/Rating';
 import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
 import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles({
     root: {
-        maxWidth: '33.333%',
+        maxWidth: '30%',
         maxHeight: 486,
-        margin: 0,
-        borderRadius: 0,
+        margin: '1em',
+        padding: '1rem',
+        borderRadius: '5px',
         boxShadow: 'unset !important',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alighnItems: 'center',
     },
     media: {
         height: 220,
@@ -57,7 +61,7 @@ export default function ProductCard({product,id}) {
                 <Button size="small" color="primary">
                     Share
                  </Button>
-                <Button size="small" color="primary">
+                <Button size="small" color="primary" onClick={() => history.push(`/product_description/${id}`)}>
                    detail description
                 </Button>
             </CardActions>

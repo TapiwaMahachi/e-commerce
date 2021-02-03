@@ -1,7 +1,7 @@
 import React from 'react'
 import StarIcon from '@material-ui/icons/Star';
 
-import "./Product.css";
+import '../css/_product.scss';
 import { Link } from 'react-router-dom';
 
 
@@ -12,7 +12,7 @@ function Product({product, id}) {
       <div  className="product">
         <div className="product__imageContainer">
           <Link to={`/product_description/${id}`} className="product__link" >
-            <img src={product.image} alt={product.image} className="product__image"></img>
+            <img src={product.image} alt="product" className="product__image"></img>
           </Link>
         </div>
         <div className="product__info">

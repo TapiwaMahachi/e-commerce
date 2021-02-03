@@ -1,6 +1,6 @@
 import React , {useEffect, useState} from 'react'
 import { db } from "../firebase";
-import "./ProductList.css";
+import '../css/_products.scss';
 import { useParams, useHistory } from 'react-router-dom';
 import ProductCard from './ProductCard';
 
@@ -37,23 +37,21 @@ function ProductList() {
             );          
     return (
         <section className="products">
-            {
-            products.length ?
+            {products.length ?
             ( 
              <div>
                  <div className="products__department">
-                     <h2>{category} Department </h2>
-                       <p>Shop Laptops, Desktops,accessories and more </p> 
+                    <h2>{category} Department </h2>
+                    <p>Shop Laptops, Desktops,accessories and more </p> 
                  </div> 
-                  <hr/>
                  <ul className="product__list"> {productList}</ul>
             </div>
               ) : (
-                    <div className="no__product" >
-                      <h3> Under construction........ </h3>
-                       <button className="prod__list"  onClick={handleclick}> Please continue to Home Page</button>
-                     </div>   
-                            
+             <div className="no__product" >
+                <h1> Under construction....... </h1>
+                <button className="prod__list"  onClick={handleclick}> Please continue to Home Page</button>
+            </div>   
+                    
                      )
             }
             
