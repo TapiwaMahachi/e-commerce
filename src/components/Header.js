@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import SearchIcon from "@material-ui/icons/Search";
-
+import logo from '../img/logo.png'
 import '../css/_header.scss';
 import { useStateValue } from '../StateProvider';
 import {auth} from '../firebase';
@@ -27,11 +27,11 @@ function Header() {
 
     return (
       <nav className="nav flex-r">
-        <Link to="/"  className="nav__link">
-          <div className="nav__logo">
-            <h2>Afrex</h2>
+         <div className="nav__logo">
+            <Link to="/">
+               <img src={logo} alt="logo"></img>
+            </Link>
           </div>
-        </Link>
         <form className="search">
           <div className="nav__search" ref={inputFocus} tabIndex ="-1" >
             <input className="input" type="text" onClick={()=>setFocus(!isFocus)}></input>
@@ -41,28 +41,31 @@ function Header() {
           </div>
         </form>
         <div className="nav__left flex-r">
-          <Link to={!!user ? '/': "/login"} className="nav__link">
-            <div className="nav__option" onClick={!!user ? () =>auth.signOut() : ()=>{}}>
-              <span className="nav__optionOne">Hello {user?.displayName || user?.email }</span>
-              <span className="nav__optionTwo">{!!user ?'Sign out': 'Sign in'}</span>
-            </div>
-          </Link>
-          <Link to="/" className="nav__link">
-            <div className="nav__option">
-              <span className="nav__optionOne">Returns</span>
-              <span className="nav__optionTwo">& Orders</span>
-            </div>
-          </Link>
-          <Link to="/cart" className="nav__link">
-            <div className="nav__container">
-              <div className="nav__optionShoppingCart">
+          <div className="nav__option" onClick={!!user ? () =>auth.signOut() : ()=>{}}>
+            <Link to={!!user ? '/': "/login"} className="nav__link ">
+              <div>
+                 <span className="nav__optionOne">Hello, {user?.displayName || user?.email }</span>
+                 <span className="nav__optionTwo">{!!user ?'Sign out': 'Sign in'}</span>
+              </div>
+            </Link>
+          </div>
+          <div className="nav__option">
+            <Link to="/" className="nav__link ">
+              <div>
+                <span className="nav__optionOne">Returns</span>
+                <span className="nav__optionTwo">& Orders</span>
+              </div>
+               
+            </Link>
+          </div>
+          <div className="nav__optionShoppingCart">
+            <Link to="/cart" className="nav__link">
                 <ShoppingCartOutlinedIcon className="nav__shoppingCart" />
                 <span className="nav__optionTotal">
                   {quantity}
                 </span>
-              </div>
-            </div>
-          </Link>
+            </Link>
+           </div>
         </div>
       </nav>
     );
