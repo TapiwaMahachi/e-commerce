@@ -26,7 +26,7 @@ function Header() {
     }, [isFocus]);
 
     return (
-      <nav className="nav flex">
+      <nav className="nav flex-r">
         <Link to="/"  className="nav__link">
           <div className="nav__logo">
             <h2>Afrex</h2>
@@ -40,7 +40,7 @@ function Header() {
             </div> 
           </div>
         </form>
-        <div className="nav__left flex">
+        <div className="nav__left flex-r">
           <Link to={!!user ? '/': "/login"} className="nav__link">
             <div className="nav__option" onClick={!!user ? () =>auth.signOut() : ()=>{}}>
               <span className="nav__optionOne">Hello {user?.displayName || user?.email }</span>

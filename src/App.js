@@ -50,39 +50,30 @@ const  App =()=> {
   return (
     
       <Router>
-        <div className="App">
+        <Header/>
           <Switch>
             <Route path="/login">
-              <SecondaryHeder />
               <Login />
             </Route>
             <Route path="/cart">
-              <Header />
               <Cart />
             </Route>
               <Route path="/checkout">
-                <SecondaryHeder />
                 <Elements stripe={stripePromise}>
                     <CheckOut />
                 </Elements>
               </Route>
             <Route path="/product_description/:id">
-              <Header />
               <ProductDescription />
             </Route>
             <Route path="/product_list/:category">
-              <Header />
               <ProductList />
-              <Footer />
             </Route>
             <Route path="/">
-             {/*<PrimarySearchAppBar />*/} 
-             <Header/>
               <Home />
-              <Footer />
             </Route>
           </Switch>
-        </div>
+        <Footer/>
       </Router>
    
   );

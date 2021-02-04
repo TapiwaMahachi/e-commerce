@@ -1,0 +1,159 @@
+@import "variables";
+@import "mixins";
+
+
+.productDescription{
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+    margin:2em auto;
+   
+    .rating__icon{
+        color: gold !important;
+    }
+    &__image{
+        padding: 1em;
+        height: fit-content;
+        img{
+            min-height: 200px;
+            min-width: 200px;
+        }
+       
+    }
+
+    &__page{
+        margin:.5em;
+        padding: 1em;
+        flex: 1 ;
+        background-color: white;
+        border-radius: 5px;
+        border: 1px solid $link;
+        
+    }
+    &__info{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        margin: auto 1em;
+    }
+    
+    .seller{
+        margin-left: .5em;
+    }
+    &__price{
+        position: relative;
+
+       small{
+         position: absolute;
+       }
+       span, small{
+         font-size: $font-med;
+         font-weight: $fw-bold;
+         color: $price;
+       }
+      span{
+        margin-left: .6em;
+      }
+    }
+    .product__description{
+        padding-left: 1.2em;
+        margin-top: 0;
+    }
+    .right{
+
+    
+        .product__buy{
+            display: flex;
+            flex-direction: column;
+            margin-left: 2em;
+            width: 300px;
+            background-color: $white;
+            padding: 1em;
+            border-radius: 5px;
+            border: 1px solid $color-primary;
+            height: fit-content;
+
+            div:first-child{
+                position: relative;
+                small{
+                    position: absolute;
+                }
+                small, span{
+                    color: $price;
+                    font-size: $font-lrg;
+                    font-weight: $fw-reg;
+                }
+                span{
+                    margin-left: .6em;
+                }
+            }
+            
+        }
+      
+        .product__qty{
+            border-radius: 10px;
+            border: 2px solid rgb(212, 206, 206);
+            width: fit-content;
+            height: 38px;
+            padding: .2em;
+            margin-bottom: 1em;
+
+            &:hover{
+                border-color: $link;
+            }
+            
+            input{
+            width: 40px;
+            height: 30px;
+            border: 0;
+            text-align: center;
+            
+          } 
+        }
+        .btns{
+            width: 100%;
+            
+            button{
+            width: 100%;
+            background: $color-primary;
+            color: $white;
+            padding: .5em;
+            line-height: 1.6;
+            border-radius: 5px;
+            border: 1px solid $color-primary;
+            cursor: pointer;
+            font-size: $font-med;
+            font-weight: $fw-reg;
+            }
+            :first-child{
+                margin-bottom: .8em;
+            }
+        }
+        
+        .inStock{
+            color: rgb(47, 163, 47);
+        }
+        .outOfStock{
+            color: rgb(156, 28, 28);
+        }
+        .share{
+            margin: 1em;
+
+            a{
+                margin: .5em;
+            }
+        }
+    }
+   
+    
+}
+//styles for desktop 
+ @include breakpoint-up(large){
+        .productDescription{
+            flex-direction: row !important;
+
+            &__page{
+                margin: 0;
+            }
+        }
+    }

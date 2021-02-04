@@ -12,6 +12,10 @@ body {
   font-family: $ff;
   line-height: 1.6;
 }
+:focus{
+  outline: 0;
+  border: 0;
+}
 
 h1{
   font-weight: $fw-bold;
@@ -30,10 +34,24 @@ section{
   min-height: 100vh;
   overflow: hidden;
 }
+img{
+  object-fit: contain;
+  display: block;
+  width: 100%;
+}
+a{
+  text-decoration: none;
+  color: $link;
+}
 //flex
-.flex{
+.flex-r{
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+}
+.flex-c{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
