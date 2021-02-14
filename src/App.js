@@ -12,6 +12,7 @@ import Login from './components/Login';
 import {auth} from './firebase';
 import {useStateValue} from './StateProvider';
 import CheckOut from './components/CheckOut';
+import SecondaryHeder from './components/SecondaryHeder';
 import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
 
