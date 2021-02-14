@@ -42,16 +42,19 @@ function Header() {
         </form>
         <div className="nav__left flex-r">
           <div className="nav__option" onClick={!!user ? () =>auth.signOut() : ()=>{}}>
-            <Link to={!!user ? '/': "/login"} className="nav__link ">
-              <div>
+            <div >
+               <Link to={!!user ? '/': "/login"} className="nav__link ">
+              <div className="container">
                  <span className="nav__optionOne">Hello, {user?.displayName || user?.email }</span>
                  <span className="nav__optionTwo">{!!user ?'Sign out': 'Sign in'}</span>
               </div>
             </Link>
+            </div>
+           
           </div>
           <div className="nav__option">
             <Link to="/" className="nav__link ">
-              <div>
+              <div className="container">
                 <span className="nav__optionOne">Returns</span>
                 <span className="nav__optionTwo">& Orders</span>
               </div>

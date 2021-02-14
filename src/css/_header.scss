@@ -1,10 +1,10 @@
 @import "variables";
 
 .nav{
-    background: $color-primary;
+    background: $color-accent;
     padding: .7em 0;
     color: white; 
-    height: 5rem;
+    height: 10vh;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -48,7 +48,7 @@
     flex-direction: row;
     flex: 1;
     align-items: center;
-    min-height: 3.2rem;
+    height: 3.2rem;
     min-width: 200px;
     }
 
@@ -77,7 +77,7 @@
         
     }
    &__left{
-        min-height: 3.4375rem;
+        height: 10vh;
     }
     &__option{
         position: relative;
@@ -85,7 +85,7 @@
         align-items: center;
         height: 70px;
         width: 120px;
-        margin-right: .6em;
+        margin: .6em;
         padding: .5em;
 
         div{
@@ -141,5 +141,9 @@
         //     border: 1px solid white;
         // }
     
+    }
+    .container{
+        height:60px;
+        margin: auto;
     }
 }
