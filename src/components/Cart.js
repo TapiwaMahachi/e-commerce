@@ -1,8 +1,9 @@
 import React from 'react';
-import "./Cart.css";
+import "../css/cart.scss";
 import Subtotal from "./Subtotal";
 import CheckoutProduct from './CheckoutProduct';
 import { useStateValue } from '../StateProvider';
+import {Link} from 'react-router-dom';
 
 
 function Cart() {
@@ -12,41 +13,22 @@ function Cart() {
     return (
         <div className="cart">
             <div className="cart__left">
-                {/*
-          <img className="checkout__image"
-            src="https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2020/May/Hero/Fuji_TallHero_45M_v2_1x._CB432458380_.jpg"
-            alt="advert"
-          ></img>
-          */}
-
+              <h2>Your shopping cart</h2>
                 { basket?.length > 0 ? (
-                    <div className="cart__productInfo">
-                        <h2>Your shopping cart</h2>
-                        <ol className="cart__productList">
-                            {basket.map(product =>
-                            <CheckoutProduct 
-                                product ={product}
-                                key={product.id}
-                             />
-                             )}
-                        </ol>
+                    <div className="cart__product">
+                      {basket.map(product => <CheckoutProduct  product ={product} key={product.id} /> )}
                     </div>
-                ) : (
-                        <h2>Your shopping cart is empty</h2>
+                ) : ( 
+                    <div className="cart__btn">
+                          <h2>Your shopping cart is empty</h2>
+                          <Link to="/" className="cart__link">
+                             <button>Continue Shopping</button>
+                          </Link>
+                         
+                     </div>  
                     ) }
             </div>
-            <div className="cart__right">
-                {basket?.length > 0 && (
-                    <>
-                        <Subtotal />
-                        <div className="cart__sponsored">
-                            <h3>Sponsored product related to your list</h3>
-                            <p>List of all sponsored related products </p>
-                        </div>
-                    </>
-                )}
-                {/*must be a component*/}
-            </div>
+           {basket?.length > 0 &&  <Subtotal />  }
         </div>
     );
 }

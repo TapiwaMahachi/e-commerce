@@ -1,8 +1,8 @@
 @import "variables";
 
 .footer{
-    background-color: $color-primary;
-    min-height: 200px;
+    background-color: $color-grey;
+    min-height: 10vh;
     padding: 20px;
     bottom: 0;
    
@@ -36,7 +36,6 @@
         display: flex;
         flex-direction: row;
         margin-left: 1em;
-
         p{
         margin-bottom: 0;
       }

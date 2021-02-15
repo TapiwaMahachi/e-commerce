@@ -4,16 +4,16 @@ import {Link} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     copyright: {
-        marginTop: theme.spacing(3),
+        marginTop: theme.spacing(5),
         display: 'flex',
         justifyContent: 'center',
     },
     link:{
         textDecoration: 'none',
-        color: 'inherit',
+        color: '#007185',
         margin: '0 .5em',
         '&:hover':{
-            color: 'blue',
+            color: '#007185',
         }
     }
 }));
@@ -29,7 +29,7 @@ function Copyright() {
                 <Link className={classes.link} to="/">
                     <span className="footer__subtitle">Terms & Conditions</span>
                 </Link>
-                {'Copyright © '}
+               {'Copyright © '}
                 <Link to="/" className={classes.link}>
                     Afrex.com
                 </Link>{' '}

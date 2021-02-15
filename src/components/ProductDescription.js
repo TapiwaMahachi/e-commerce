@@ -5,7 +5,6 @@ import { Link, useParams } from "react-router-dom";
 import "../css/_productDesc.scss";
 import { useStateValue} from "../StateProvider";
 import { db } from "../firebase";
-import Quantiy from "./Quantiy";
 import facebook from '../img/icons8-facebook.svg';
 import twitter from '../img/icons8-twitter.svg';
 
