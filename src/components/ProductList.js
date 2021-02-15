@@ -12,9 +12,7 @@ function ProductList() {
 
     //getting the category from the url
     const {category} = useParams();
-    console.log(category)
-    console.log(products)
-    
+   
     useEffect(() => {
       //searching products based on category
         const unsubscribe = db.collection('stock').onSnapshot(snapshot =>{
@@ -24,17 +22,15 @@ function ProductList() {
         )});
         return () =>unsubscribe;
     },[category]);
-  
-   const handleclick = () =>{
-            history.push('/');
-   }
+
     const productList = products.map((product) => 
             <ProductCard
                 product={product.data}
                 key={product.id}
                 id ={product.id}
             />
-            );          
+            ); 
+                     
     return (
         <section className="products">
             {products.length ?
@@ -49,7 +45,12 @@ function ProductList() {
               ) : (
              <div className="no__product" >
                 <h1> Under construction....... </h1>
-                <button className="prod__list"  onClick={handleclick}> Please continue to Home Page</button>
+                <button 
+                    className="prod__list"  
+                    onClick={e=> history.push('/')}
+                >
+                     Please continue to Home Page
+                </button>
             </div>   
                     
                      )

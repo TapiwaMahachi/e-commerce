@@ -6,7 +6,7 @@ import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import TextField from '@material-ui/core/TextField';
 
 import { makeStyles } from '@material-ui/core/styles';
-import Copyright from './Copyright';
+
 
 
 function Login() {
@@ -109,7 +109,6 @@ function Login() {
     return ( 
       <div className="login">
         { isLogedIn ? loginView : registerView } 
-        <Copyright/>
       </div>
         )
   
