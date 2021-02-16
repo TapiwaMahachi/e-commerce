@@ -2,7 +2,7 @@
 @import "mixins";
 
 .products{
-
+    background: $white;
    
     &__department{
         padding: 1em;
@@ -36,6 +36,19 @@
         h1{
             color: $color-primary;
         }
+         button{
+            width: 100%;
+            background: $color-primary;
+            color: $white;
+            padding: .5em;
+            border: 0;
+            outline: 0;
+            line-height: 1.6;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: $font-med;
+            font-weight: $fw-reg;
+    }
     }
     @include breakpoint-up(large){
         .product__list{

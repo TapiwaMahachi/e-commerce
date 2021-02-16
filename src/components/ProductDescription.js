@@ -20,11 +20,6 @@ function ProductDescription() {
   //hook to get id from the url used to search the product in the db
    const {id} = useParams();
 
-  //get Quanity
- const adjustQuantity = (qty) => {
-    setQuantity(qty)
-  }
-  console.log(quantity)
 //need to fix all products in the db must have quantity
     //function for adding to cart
     function addToCart(){
@@ -44,14 +39,7 @@ function ProductDescription() {
         setProduct(snapshot.docs.map(doc => 
             ({id: doc.id, ...doc.data()}))
             .filter(data => id ===data.id)));
-        /*    //this is slower
-      db.collection('products').doc(id)
-          .get()
-          .then(prod =>{
-            if(!prod.exists) return;
-            setProduct(prod.data())
-          })
-*/
+     
         return () => unsubscribe;
 
     },[id])//dependecy to search when changed

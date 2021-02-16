@@ -43,18 +43,7 @@ a{
   text-decoration: none;
   color: $link;
 }
- button{
-  width: 100%;
-  background: $color-primary;
-  color: $white;
-  padding: .5em;
-  line-height: 1.6;
-  border-radius: 5px;
-  border: 1px solid $color-primary;
-  cursor: pointer;
-  font-size: $font-med;
-  font-weight: $fw-reg;
-}
+
 //flex
 .flex-r{
   display: flex;

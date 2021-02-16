@@ -12,21 +12,32 @@ import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles({
     root: {
-        maxWidth: '30%',
-        maxHeight: 486,
-        margin: '1em',
-        padding: '1rem',
+        width: 272,
+        height: 420,
+        margin: '.5em',
+        padding: '.6em',
+        border:'1px solid #F6F3EB',
         borderRadius: '5px',
         boxShadow: 'unset !important',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center',
-        alighnItems: 'center',
+        justifyContent: 'space-between',
+        alignItems: 'center',
     },
     media: {
-        height: 220,
+        height: 170,
         width: '100%',
         objectFit: 'contain',
+    },
+    txt:{
+        textOverflow:'ellipsis',
+        WebkitLineClamp: '3',
+        overflow: 'hidden',
+        maxHeight: 81,
+        color:'#0F1111',
+    },
+    btn:{
+        background: 'white',
     },
 });
 
@@ -37,7 +48,7 @@ export default function ProductCard({product,id}) {
 
     return (
         <Card className={classes.root} >
-            <CardActionArea onClick={() => history.push(`/product_description/${id}`)}>
+            <CardActionArea className={classes.btn} onClick={() => history.push(`/product_description/${id}`)}>
                 <CardMedia
                     component="img"
                     className={classes.media}
@@ -45,7 +56,7 @@ export default function ProductCard({product,id}) {
                     title="product image"
                 />
                 <CardContent>
-                    <Typography gutterBottom variant="subtitle1" component="p" color="primary">
+                    <Typography className={classes.txt} gutterBottom variant="subtitle1" component="h2" color="primary">
                        {product.title}
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
@@ -58,10 +69,7 @@ export default function ProductCard({product,id}) {
                 </CardContent>
             </CardActionArea>
             <CardActions>
-                <Button size="small" color="primary">
-                    Share
-                 </Button>
-                <Button size="small" color="primary" onClick={() => history.push(`/product_description/${id}`)}>
+                <Button className={classes.btn} size="small" color="primary" onClick={() => history.push(`/product_description/${id}`)}>
                    detail description
                 </Button>
             </CardActions>

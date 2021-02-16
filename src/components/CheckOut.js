@@ -5,11 +5,10 @@ import {
   makeStyles, } from '@material-ui/core';
 import {  useHistory } from 'react-router-dom';
 import { useState } from 'react';
-import './Checkout.css'
+import '../css/_shipping.scss'
 import ShippingAddress from './ShippingAddress';
 import ViewOrder from './ViewOrder';
 import Payment from './Payment';
-import Copyright from './Copyright';
 import  StripePayment  from "./StripePayment";
 
 
@@ -20,7 +19,7 @@ function CheckOut() {
 
   const [activeStep, setActiveStep] = useState(0);
   const history = useHistory();
-  const classes = useStyles();
+  
 
   const update =(step)=>{
     switch(step){
@@ -36,8 +35,8 @@ function CheckOut() {
   };
 
   return (
-    <div className="checkout">
-        <main className="checkout__main">
+    <section className="checkout">
+        <div className="checkout__main">
           <div className="checkout__stepper">
             <Stepper activeStep={activeStep} >
               {steps.map(label => (
@@ -48,7 +47,7 @@ function CheckOut() {
 
             </Stepper>
           </div>
-          <>
+          <div className="checkout__bottom">
             {activeStep === steps.length ? (
               <>
                 <p>Order ref#</p>
@@ -60,19 +59,17 @@ function CheckOut() {
                 </Button>
               </>
             ) : (
-                <>
+                <div className="checkout__container">
                   {update(activeStep)}
                   <div className="checkout__buttons">
                     {
-                      activeStep !== 0 && (<Button
-                        className={classes.btn}
-                        onClick={() => setActiveStep(activeStep - 1)}
-                      >
+                      activeStep !== 0 && (
+                      <Button onClick={() => setActiveStep(activeStep - 1)} >
                         Back
                       </Button>)
                     }
                     <Button
-                      className={classes.btn}
+                      className="next"
                       color='primary'
                       variant='contained'
                       onClick={() => setActiveStep(activeStep + 1)}
@@ -80,25 +77,15 @@ function CheckOut() {
                       {activeStep === steps.length - 1 ? 'Process payment' : 'Next'}
                     </Button>
                   </div>
-                </>
+                </div>
               )
             }
-          </>
+          </div>
         
-        </main> 
-      <Copyright  />
-    </div>
+        </div> 
+    </section>
   )
 }
 
 export default CheckOut
-
-const useStyles = makeStyles((theme)=>({
-      btn: {
-        marginTop: theme.spacing(3),
-        marginLeft: theme.spacing(1),
-        fontSize: '15px',
-      },
-
-}));
 

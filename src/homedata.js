@@ -69,3 +69,15 @@ export const images = [
          "https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2020/May/Hero/Fuji_TallHero_Toys_en_US_1x._CB431858161_.jpg",
          "https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2020/May/Hero/Fuji_TallHero_Computers_1x._CB432469755_.jpg",
        ];
+//for adding address informarion
+export  const fields =[
+     { name :"firstname", label : 'firstName', autoComplete: 'given-name', autoFocus: true, },
+     { name: "lastname", label: 'LastName', autoComplete: 'family-name', autoFocus: false, },
+     { name: "addressline1", label: 'address line 1', autoComplete: 'shipping address line 1', autoFocus: false, },
+     { name: "addressline2", label: 'address line 2', autoComplete: 'shipping address line 2', autoFocus: false, },
+     { name: "city", label: 'city', autoComplete: 'shipping addressLevel2', autoFocus: false, },
+     { name: "state", label: 'state / province', autoComplete: 'shipping state', autoFocus: false, },
+     { name: "zip_code", label: 'zip code ', autoComplete: 'shipping code', autoFocus: false, },
+     { name: "country", label: 'country', autoComplete: 'shipping country', autoFocus: false, },
+ ]
+ 

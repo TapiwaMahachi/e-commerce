@@ -1,5 +1,5 @@
 import React from 'react';
-import "../css/cart.scss";
+import "../css/_cart.scss";
 import Subtotal from "./Subtotal";
 import CheckoutProduct from './CheckoutProduct';
 import { useStateValue } from '../StateProvider';
@@ -13,14 +13,13 @@ function Cart() {
     return (
         <div className="cart">
             <div className="cart__left">
-              <h2>Your shopping cart</h2>
+              <h2>{`Your shopping cart ${basket.length ? '': 'is empty'}`}</h2>
                 { basket?.length > 0 ? (
                     <div className="cart__product">
                       {basket.map(product => <CheckoutProduct  product ={product} key={product.id} /> )}
                     </div>
                 ) : ( 
                     <div className="cart__btn">
-                          <h2>Your shopping cart is empty</h2>
                           <Link to="/" className="cart__link">
                              <button>Continue Shopping</button>
                           </Link>

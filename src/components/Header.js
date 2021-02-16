@@ -29,7 +29,7 @@ function Header() {
       <nav className="nav flex-r">
          <div className="nav__logo">
             <Link to="/">
-               <img src={logo} alt="logo"></img>
+               <h2>Afrex</h2>
             </Link>
           </div>
         <form className="search">

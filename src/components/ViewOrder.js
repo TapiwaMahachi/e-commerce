@@ -1,62 +1,63 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import {useStateValue} from '../StateProvider';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import '../css/_viewOrder.scss';
+import { useHistory } from 'react-router-dom';
 
-const addresses = ['1 Material-UI Drive', 'Reactville', 'Anytown', '99999', 'USA'];
 
-const useStyles = makeStyles((theme) => ({
-    listItem: {
-        padding: theme.spacing(1, 0),
-    },
-    total: {
-        fontWeight: 700,
-    },
-    title: {
-        marginTop: theme.spacing(2),
-    },
-}));
+
+function ViewOrder() {
+    //getting basket
+    const [{basket}] = useStateValue();
+    //variable to render components  based on basket if empty of not
+    const [isEmpty ,setIsEmpty] = useState(true);
+    //getting the history from the url
+    const history = useHistory();
+
+    const redirect= e=>{
+        //redirect to home page
+        console.log('clicked button redirecting to homepage')
+        history.push('/');
+    }
+    useEffect(()=>{
+        if(basket.length > 0){
+            setIsEmpty(false);
+        }else{
+            const btn = document.querySelector('.next')
+        }
+    },[basket])
+
+    return (!isEmpty  ? <div className="order-summary"> 
+                            <Grid container spacing={2}>
+                                {basket.map(product => <Product product={product} key={product.id} /> )}
+                            </Grid>
+                        </div>
+                     : <div className="order-empty">
+                         <button onClick={redirect}>Basket Empty Continue Shopping</button>
+                      </div>
+    )
+        
+    
+}
+
+export default ViewOrder
 
 const Product = ({product}) =>{
+     
     return(
     
-        <div className= "checkout__productContainer">
-            <img className="checkout__productImg" src={product.image} alt=''/> 
-            <div className='checkout__productCost'> 
-                <span className="checkout__productTitle">{product.title}</span>
-                <span className="cost">{product.price}</span>
+        <div className= "order-summary__product">
+            <img src={product.image} alt='product_img'/> 
+            <div className='order-summary__info'> 
+                  <h3>{product.title}</h3>
+                  <div className="cost">
+                     <span>R</span>
+                     <span >{product.price}</span>
+                  </div>
+                
             </div>
         </div>
     )
 }
-function ViewOrder() {
-
-    const [{basket}] = useStateValue();
-
-    const classes = useStyles();
-    return (
-        <React.Fragment>
-            <h2 className="viewOrder__title"> Order summary</h2>  
-            <Grid container spacing={2}>
-                {basket.map(product =>
-                <Grid item xs={12}>
-                   <Product product={product} key={product.id} />
-                </Grid>
-                )}
-            </Grid>
-           
-            <Grid container spacing={2}>
-                <Grid item xs={12} sm={6}>
-                    <Typography variant="h6" gutterBottom className={classes.title}>
-                        Shipping
-                    </Typography>
-                    <Typography gutterBottom>John Smith</Typography>
-                    <Typography gutterBottom>{addresses.join(', ')}</Typography>
-                </Grid>
-            </Grid>
-        </React.Fragment>
-    )
-}
-
-export default ViewOrder

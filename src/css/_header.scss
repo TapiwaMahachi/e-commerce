@@ -14,12 +14,15 @@
         width: 100px;
         text-align: center;
         margin-left: 1rem;
-
-        img{
-            height: 55px;
-            
+        a{
+            height: 65px;
         }
-
+        h2{
+            color: $white;
+            padding: .5em;
+            margin: 0;
+            padding-bottom: 0;
+        }
         &:hover{
            border-radius: 5px;
            border: 1px solid white; 
