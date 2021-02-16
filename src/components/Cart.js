@@ -11,9 +11,9 @@ function Cart() {
     const [{ basket },] = useStateValue();
     
     return (
-        <div className="cart">
+        <section className="cart">
             <div className="cart__left">
-              <h2>{`Your shopping cart ${basket.length ? '': 'is empty'}`}</h2>
+              <h2>{`shopping cart ${basket.length ? '': 'is empty'}`}</h2>
                 { basket?.length > 0 ? (
                     <div className="cart__product">
                       {basket.map(product => <CheckoutProduct  product ={product} key={product.id} /> )}
@@ -28,7 +28,7 @@ function Cart() {
                     ) }
             </div>
            {basket?.length > 0 &&  <Subtotal />  }
-        </div>
+        </section>
     );
 }
 

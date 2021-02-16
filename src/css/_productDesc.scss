@@ -5,9 +5,8 @@
 .productDescription{
     display: flex;
     flex-direction: column;
-    width: 85%;
-    margin:2em auto;
-   
+    background: white;
+
     .rating__icon{
         color: gold !important;
     }
@@ -20,14 +19,23 @@
         }
        
     }
-
+    h2{
+        font-size: $font-lrg;
+        font-weight: $fw-bold;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100%;
+        color: $color-accent;
+    }
     &__page{
-        margin:.5em;
+        margin:1em;
         padding: 1em;
         flex: 1 ;
         background-color: white;
         border-radius: 5px;
-        border: 1px solid $link;
         
     }
     &__info{
@@ -47,8 +55,8 @@
          position: absolute;
        }
        span, small{
-         font-size: $font-med;
-         font-weight: $fw-bold;
+         font-size: $font-lrg;
+         font-weight: $fw-reg;
          color: $price;
        }
       span{
@@ -65,12 +73,12 @@
         .product__buy{
             display: flex;
             flex-direction: column;
-            margin-left: 2em;
+            margin: 2em;
             width: 300px;
-            background-color: $white;
+            background:$white;
             padding: 1em;
             border-radius: 5px;
-            border: 1px solid $color-primary;
+            border: 1px solid $color-grey;
             height: fit-content;
 
             div:first-child{
@@ -104,6 +112,8 @@
             cursor: pointer;
             font-size: $font-med;
             font-weight: $fw-reg;
+            border: 0;
+            text-transform: capitalize;
             }
             :first-child{
                 margin-bottom: .8em;

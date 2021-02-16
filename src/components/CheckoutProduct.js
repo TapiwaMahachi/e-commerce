@@ -34,8 +34,8 @@ function CheckoutProduct({product}) {
               <p className="checkout-p__productTitle">{product.title}</p>
             </Link>
 
-            <div className="checkout-p__productPrice">
-              <small>$</small>
+            <div className="checkout-p__price">
+              <span>$</span>
               <span>{product.price}</span>
             </div>
             <Box className="checkout-p__productRating " component="fieldset" mb={3} borderColor="transparent">

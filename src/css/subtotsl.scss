@@ -1,16 +1,16 @@
 @import "variables";
 
 .subtotal{
-    width: fit-content;
+    width: 500px;
     border-radius: 4px;
     margin: 1em;
     padding: .5em;
     background-color: $white;
-    border: 1px solid $link;
+    border: 1px solid $color-grey;
     height: fit-content;
      p{
-        font-weight: 600;
-        font-size: 1.2em;
+        font-weight: $fw-bold;
+        font-size: $font-lrg;
         margin: .5em 0;
     }  
     &__gift{
@@ -21,19 +21,23 @@
             margin: 0;
             align-self: center;
         }
-         p{
+        p{
         margin-left: .5em;
        }
     }
    
     &__proceed{
-        background-color: $link;
+        cursor: pointer;
+        text-transform: capitalize;
+        background: $color-primary;
         padding: .5em;
         line-height: 1.6;
         margin:1em 0;
-        border-radius: 3px;
+        border-radius: 5px;
         border: 0;
         color: white;
         width: 100%;
+        font-size: $font-med;
+        font-weight: $fw-reg;
     }
 }

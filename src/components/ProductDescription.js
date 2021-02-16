@@ -45,11 +45,8 @@ function ProductDescription() {
     },[id])//dependecy to search when changed
 
   return (
-  
-    <section>
-      { product.length && (
-     
-      <div className="productDescription">
+       product.length && 
+       <section className="productDescription" >
         <div className="productDescription__page flex-c">
           <div className="productDescription__top flex-r">
             <div className="productDescription__image">
@@ -75,7 +72,7 @@ function ProductDescription() {
                       </Link> 
                   </div>     
                 <div className="productDescription__price">
-                  <small>{`$`}</small>
+                  <small>$</small>
                   <span>{product[0].price}</span>
                 </div>
                 <span className="productDescription__rating">
@@ -104,7 +101,6 @@ function ProductDescription() {
                 <div>
                   {product[0].stocked ? <h3 className="inStock">In Stock.</h3> : <h3 className="outOfStock">Out of stock.</h3> }
                 </div>
-            {/* <Quantiy id={id} quantity={adjustQuantity}/> needs revis */}
                <div className="product__qty">
                  <label>Qty:</label>
                  <input type="number" name="number" max="30" min="1" defaultValue="1" />
@@ -126,11 +122,8 @@ function ProductDescription() {
                 <img src={twitter} alt="twitter"></img>
               </a>
             </div>
-          </div>
-          
-      </div>
-      )}
-    </section>
+          </div> 
+      </section>
   );
 }
 

@@ -13,7 +13,7 @@ import { useHistory } from 'react-router-dom';
 const useStyles = makeStyles({
     root: {
         width: 272,
-        height: 420,
+        height: 400,
         margin: '.5em',
         padding: '.6em',
         border:'1px solid #F6F3EB',
@@ -30,10 +30,12 @@ const useStyles = makeStyles({
         objectFit: 'contain',
     },
     txt:{
+        display:'-webkit-box',
+        WebkitBoxOrient: 'vertical',
+        width:'100%',
         textOverflow:'ellipsis',
-        WebkitLineClamp: '3',
+        WebkitLineClamp: '2',
         overflow: 'hidden',
-        maxHeight: 81,
         color:'#0F1111',
     },
     btn:{

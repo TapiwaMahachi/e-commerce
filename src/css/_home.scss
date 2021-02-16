@@ -41,9 +41,14 @@
     position: relative;  
     
     h2{
-        color: $text;
+        color: $color-accent;
+        font-size: $font-lrg;
+        font-weight: $fw-bold;
     }
-
+    p{
+        font-size: $font-med;
+        font-weight: $fw-bold;
+    }
     &__img{
         width: 290px;
         height: 280px;
