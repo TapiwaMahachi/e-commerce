@@ -1,3 +1,4 @@
+ import {db} from './firebase';
 
 export const initialState ={
     basket: [],
@@ -10,7 +11,7 @@ export const initialState ={
 function reducer(state, action) {
         
         if(action.type === "SET_USER"){
-           
+        
             return {
                 ...state,
                 user: action.user,

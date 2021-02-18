@@ -1,8 +1,9 @@
 import React from 'react'
 
 
-function ViewShippingAddress({info}) {
-       
+function ViewShippingAddress(props) {
+       const shipping = props.shipping;
+       console.table(shipping)
     return (
         <div 
           className="viewShipping" 
@@ -10,11 +11,11 @@ function ViewShippingAddress({info}) {
         >
             <div  className="info" style={{ display:'flex',flexDirection:'column' }} >
                 <label  style={{ fontSize: '1.5rem', }} >
-                    {`${info.firstname} ${info.lastname}`}
+                    {`${shipping.name}`}
                 </label>
-                <label> {`${info.addressline1} ${info.addressline2}`}</label>
-                <label> {`${info.city} ${info.state} `} </label>
-                <label>{` ${info.country} ${info.zip_code}`} </label>
+                <label> {`${shipping.addressline1} ${shipping.addressline2}`}</label>
+                <label> {`${shipping.city} ${shipping.state} `} </label>
+                <label>{` ${shipping.country} ${shipping.zip_code}`} </label> 
             </div>
             
         </div>

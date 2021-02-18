@@ -71,8 +71,8 @@ export const images = [
        ];
 //for adding address informarion
 export  const fields =[
-     { name :"firstname", label : 'firstName', autoComplete: 'given-name', autoFocus: true, },
-     { name: "lastname", label: 'LastName', autoComplete: 'family-name', autoFocus: false, },
+    //  { name :"name", label : 'firstName', autoComplete: 'given-name', autoFocus: true, },
+    //  { name: "lastname", label: 'lastName', autoComplete: 'family-name', autoFocus: false, },
      { name: "addressline1", label: 'address line 1', autoComplete: 'shipping address line 1', autoFocus: false, },
      { name: "addressline2", label: 'address line 2', autoComplete: 'shipping address line 2', autoFocus: false, },
      { name: "city", label: 'city', autoComplete: 'shipping addressLevel2', autoFocus: false, },

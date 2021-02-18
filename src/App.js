@@ -9,7 +9,7 @@ import Cart from "./components/Cart";
 import Home from "./components/Home";
 import Footer from './components/Footer';
 import Login from './components/Login';
-import {auth} from './firebase';
+import {auth,db} from './firebase';
 import {useStateValue} from './StateProvider';
 import CheckOut from './components/CheckOut';
 import SecondaryHeder from './components/SecondaryHeder';
@@ -27,11 +27,17 @@ const  App =()=> {
 
   //get user
   const [{user}, dispatch] = useStateValue();
-
+  //getting the user which is loged in 
   useEffect(() =>{
     const unsubscribe = auth.onAuthStateChanged((authUser) =>{
 
       if(authUser){
+        //creating a user in the database if doesnt exists
+        db.collection('users').doc(authUser.uid).set({
+          name: authUser.displayName,
+          email: authUser.email,
+        },{merge: true})
+        //used for local access with statecontext
         dispatch({
           type: "SET_USER",
           user: authUser,
@@ -46,7 +52,7 @@ const  App =()=> {
     return () => unsubscribe();
   },[dispatch])
 
-   console.log(user)   
+   
   return (
     
       <Router>

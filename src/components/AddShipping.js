@@ -1,84 +1,88 @@
-import React from 'react'
-import { TextField, Grid 
-        ,FormControlLabel,Checkbox, Button,
-   } from '@material-ui/core';
-import { useState } from 'react';
-import "../css/_shipping.scss";
+import React ,{useState, useEffect} from 'react'
+import { TextField, Grid,FormControlLabel,Checkbox, Button,} from '@material-ui/core';
+import ViewShippingAddress from './ViewShippingAddress';
 import {db} from '../firebase';
 import {useStateValue} from '../StateProvider';
-import ViewShippingAddress from './ViewShippingAddress';
 import {fields} from '../homedata';
-import { useEffect } from 'react';
+import "../css/_shipping.scss";
 
 
 
-function ShippingAddress() {
 
-    //getting the loged in user
+function AddShipping() {
+
+    //getting the loged in user from the context api 
     const [{user}] = useStateValue();
-    console.log('user',user?.uid)
+    
     //state for user addresss
     const [val, setVal] = useState({
-        firstname: '',
-        lastname: '',
+        isSet: false,
         addressline1: '',
         addressline2: '',
         city:'',
         state: '',
         zip_code: '',
         country: '',
-        id: user?.uid //must be associated with the id for signed in user
+        name: '',
+       
     })
+
     //getting all the values from the input
     const handleChange = e=>{
         e.preventDefault();
-
-        //getting the actual changed input field
+        //getting the actual changed input field using object destructuring assignment
         const {name , value} = e.target;
         /*
-        *setting the value
+        *setting the value using object initializer dynamicaly setting properties
         */
-        setVal({ ...val, [name]:value})
+        setVal({ ...val, [name]: value })
     }
-     //adding all the information to database
+
      const handleSubmit = e =>{
          e.preventDefault();
-         //get information from db;
-          db.collection('users').add(val);
-         //clear the form
+
+        //  if(val.name === null){
+        //      setVal({...val, name: `${val.firstname} ${val.lastname}`})
+        //  }
+         //adding information to database from db base on user id;
+          db.collection('users').doc(user.uid)
+          .set({...val, isSet: true} , {merge:true});
+         //clearing the form
          setVal({
-            firstname: '',
-            lastname: '',
+            isSet: true,
             addressline1: '',
             addressline2: '',
             city:'',
             state: '',
             zip_code: '',
             country: '', 
+            name:'',
          })
      }
-     //if loged in add the next button
-        
+  
      //get user information from the database using the user uid
      useEffect(()=>{
-        const unsubscribe = db.collection('users').where('id','==', '')
-        .get().then(data =>{
-            data.docs.forEach(doc => {
-                setVal({...val, ...doc.data()})
-            })
-        })
          if(user){
-            const nextbtn = document.querySelector('.next');
-            nextbtn.classList.add('visible'); 
+            db.collection('users').doc(user?.uid)
+            .get().then(doc =>{
+                if(doc.exists)
+                    setVal({...val,...doc.data()})
+                }
+            ).catch(console.log)
         }
-        return ()=> unsubscribe;
      },[user])
+
      //add the next button
+     useEffect(()=>{
+        const nextbtn = document.querySelector('.next');
+         if(val.isSet)
+            nextbtn.classList.add('visible'); 
+        
+     },[val])
      
      //template for adding shipping for a new user
-     const addShipping =(
+     const ShippingInput = (
          <div className="shipping">
-            <h2 className="shipping__title">Shipping Address</h2>
             <form className="shipping__form" onSubmit={handleSubmit}>
                 <Grid container spacing={3} >
                     {fields.map( field =>
@@ -109,11 +113,16 @@ function ShippingAddress() {
                 <Button  className="save" type="submit"  variant="contained" color="primary">Save</Button>
             </form>
         </div>
-     )
-    return ( user ? <ViewShippingAddress info={val}/>: addShipping )
+    );
+
+     return <div>{ val.isSet ? <ViewShippingAddress shipping={val}/> : ShippingInput }</div> 
+        
+ 
        
     
 
 }
 
-export default ShippingAddress
+export default AddShipping
+
+//function to add the shipping input

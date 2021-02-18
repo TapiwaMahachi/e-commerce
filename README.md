@@ -1,21 +1,21 @@
-This project was built as Educational Project using e-commerce websites
 
-this website is designed for desktop only - mobile version still under construction
+#This website is designed for desktop only -not responsive 
 
-#url: https://afrex-6f4a8.web.app
+Please visit for live demo [afrex website](https://afrex-6f4a8.web.app)
 
 ## Tech Stacks Used
+Front end was designed using the following
 
 React
 JavaScript
-CSS
-FIrebase
-MaterialUi 
+SCSS/CSS
+MaterialUi- for some forms and buttons
 
 ## Backend 
-
-Firebase - firestore  data and authentication
+Firebase - cloud firestore  data storage 
+Authentication  -  Email, Google, Apple and Facebook
+Payment - Stripe Paymnent 
 
 ## deployment and hosting 
-
 Firebase 
+

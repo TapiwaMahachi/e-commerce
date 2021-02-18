@@ -11,10 +11,11 @@ import {auth} from '../firebase';
 
 function Header() {
 
-  //basket context
+  //basket and user context
   const [{basket, user}]= useStateValue();
   const inputFocus = useRef();
   const [isFocus, setFocus] = useState(false);
+  
   //getting the quantity from the basket of each product
  const quantity = basket.map(prod => prod.quantity)
                         .reduce((qty, init) =>qty +init,0);
@@ -59,7 +60,7 @@ function Header() {
             </Link>
           </div>
           <div className="nav__optionShoppingCart">
-            <Link to="/cart" className="nav__link">
+            <Link to={user ? '/cart' : '/login'} className="nav__link">
                 <ShoppingCartOutlinedIcon className="nav__shoppingCart" />
                 <span className="nav__optionTotal">
                   {quantity}

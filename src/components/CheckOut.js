@@ -6,7 +6,7 @@ import {
 import {  useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import '../css/_shipping.scss'
-import ShippingAddress from './ShippingAddress';
+import AddShipping from './AddShipping';
 import ViewOrder from './ViewOrder';
 import Payment from './Payment';
 import  StripePayment  from "./StripePayment";
@@ -24,7 +24,7 @@ function CheckOut() {
   const update =(step)=>{
     switch(step){
       case 0:
-        return <ShippingAddress/>
+        return <AddShipping/>
       case 1:
         return <ViewOrder />
       case 2:

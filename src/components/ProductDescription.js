@@ -7,6 +7,7 @@ import { useStateValue} from "../StateProvider";
 import { db } from "../firebase";
 import facebook from '../img/icons8-facebook.svg';
 import twitter from '../img/icons8-twitter.svg';
+import { button } from "@material-ui/core";
 
 
 function ProductDescription() {
@@ -45,7 +46,7 @@ function ProductDescription() {
     },[id])//dependecy to search when changed
 
   return (
-       product.length && 
+       product.length > 0 && 
        <section className="productDescription" >
         <div className="productDescription__page flex-c">
           <div className="productDescription__top flex-r">
@@ -106,10 +107,20 @@ function ProductDescription() {
                  <input type="number" name="number" max="30" min="1" defaultValue="1" />
                </div>
                <div className="btns">
-                  <button className="add__toCart" disabled={!product[0].stocked} onClick={addToCart}>
+                  <button
+                    variant="contained"
+                    color="primary" 
+                    className="add__toCart"
+                    disabled={!product[0].stocked}
+                      onClick={addToCart}
+                    >
                     Add to shopping cart
                   </button>
-                  <button className="add__toWishList">Add to Wish List</button>
+                  <button 
+                  variant="contained"
+                  color="primary"
+                  type="submit"
+                  >Add to Wish List</button>
                </div>
                 
             </div>
