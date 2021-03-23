@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import StarIcon from "@material-ui/icons/Star";
 
-import { Link, useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import "../css/_productDesc.scss";
 import { useStateValue} from "../StateProvider";
 import { db } from "../firebase";
@@ -10,50 +10,67 @@ import twitter from '../img/icons8-twitter.svg';
 import { button } from "@material-ui/core";
 
 
+
 function ProductDescription() {
      
-  //hook for the basket
-  const [, dispatch] = useStateValue();
-  //hook for the product
-  const [product, setProduct]= useState([]);
-  const [quantity, setQuantity] = useState(1);
-  
-  //hook to get id from the url used to search the product in the db
-   const {id} = useParams();
+  //hook for the basket - from the context 
+  const [{user}, dispatch] = useStateValue();
+  //hook for adding state 
+  const [data, setData]= useState({
+    product: {},
+    isLoading: true,
+  });
 
-//need to fix all products in the db must have quantity
-    //function for adding to cart
+  //assignment destructuring
+  const {product , isLoading} = data;
+
+  //hook to get id from the url and use the id to search the product in the db
+   const {id} = useParams();
+   //hook to redirect if user is not logged in
+   const history = useHistory();
+
+    //adding to cart if user is logged in or redirect to login page
     function addToCart(){
-       dispatch({
-         type: "ADD_TO_CART",
-         payload: 
-            { ...product[0], quantity: quantity },   
-              
-       });
+      if(user){
+         dispatch({
+          type: "ADD_TO_CART",
+          payload: {...product, quantity: 1 },   
+         });
+      }else{
+       history.push('/login')
+      } 
     }
    
-    //search the product in the database based on id passed to the router
+    //search the product in the database based on id passed via url
     useEffect(() =>{
-      //search the product
-      //this method is faster
-     const unsubscribe = db.collection('stock').onSnapshot(snapshot =>
-        setProduct(snapshot.docs.map(doc => 
-            ({id: doc.id, ...doc.data()}))
-            .filter(data => id ===data.id)));
-     
-        return () => unsubscribe;
+      db.collection('stock').doc(id).get()
+      .then(res => setData({isLoading: false, product: res.data()}))
+    },[id])
 
-    },[id])//dependecy to search when changed
+  return(
+    <section className="productDescription">
+      {isLoading ? <Loading/> : <ViewProduct product={product} addToCart={addToCart}/>}
+    </section>
+  )
+}
 
-  return (
-       product.length > 0 && 
-       <section className="productDescription" >
+export default ProductDescription ;
+
+
+
+ //product description component
+function ViewProduct(props){
+
+  const {product, addToCart} = props;
+
+  return(
+      <>
         <div className="productDescription__page flex-c">
           <div className="productDescription__top flex-r">
             <div className="productDescription__image">
               <Link to="/product" className="productDescription__link">
                 <img
-                  src={product[0].image}
+                  src={product.image}
                   alt="me"
                   className="image"
                 ></img>
@@ -62,22 +79,22 @@ function ProductDescription() {
             <div className="productDescription__info">
                 <h2
                   className="productDescription__title"
-                  data-attribute={product[0].title}
+                  data-attribute={product.title}
                 >
-                {product[0].title}
+                {product.title}
                 </h2>
                 <div className="productDescription__seller">
                   <span>by</span>
                       <Link to="/" className="productDescription__sellerLink">
-                        <span className="seller">{product[0].seller}</span>
+                        <span className="seller">{product.seller}</span>
                       </Link> 
                   </div>     
                 <div className="productDescription__price">
                   <small>$</small>
-                  <span>{product[0].price}</span>
+                  <span>{product.price}</span>
                 </div>
                 <span className="productDescription__rating">
-                  {Array(product[0].rating)
+                  {Array(product.rating)
                     .fill()
                     .map((_, i) => (
                       <StarIcon key={i} className="rating__icon" />
@@ -88,7 +105,7 @@ function ProductDescription() {
             <div className="productDescription__bottom">
               <h2 className="about">About the Product</h2>
               <ul className="product__description">
-                {product[0].description.map((desc,index)=><li key={index}>{desc}</li>)}
+                {product.description.map((desc,index)=><li key={index}>{desc}</li>)}
               </ul>
             </div>
           </div>
@@ -96,11 +113,11 @@ function ProductDescription() {
             <div className="product__buy">
                 <div>
                   <small>{`$`}</small>
-                  <span>{product[0].price}</span>
+                  <span>{product.price}</span>
                 </div>
-                <h3>Arrival Date : enter date her</h3>
+                <h3>{`Arrival Date: ${new Date().getDate()}`}</h3>
                 <div>
-                  {product[0].stocked ? <h3 className="inStock">In Stock.</h3> : <h3 className="outOfStock">Out of stock.</h3> }
+                  {product.stocked ? <h3 className="inStock">In Stock.</h3> : <h3 className="outOfStock">Out of stock.</h3> }
                 </div>
                <div className="product__qty">
                  <label>Qty:</label>
@@ -111,9 +128,9 @@ function ProductDescription() {
                     variant="contained"
                     color="primary" 
                     className="add__toCart"
-                    disabled={!product[0].stocked}
-                      onClick={addToCart}
-                    >
+                    disabled={!product.stocked}
+                    onClick={addToCart}
+                  >
                     Add to shopping cart
                   </button>
                   <button 
@@ -134,8 +151,17 @@ function ProductDescription() {
               </a>
             </div>
           </div> 
-      </section>
-  );
+      </>
+    )
 }
-
-export default ProductDescription ;
+  //temmplate displayed when data is getting fetched from the db
+function Loading(){
+  return(
+    <div 
+      className="loading" 
+      style={{width: "100%", height:"100%", textAlign:"center", marginTop: "2em"}}
+    >
+      <h2>Loading please wait.....</h2>
+    </div>
+   )
+ }

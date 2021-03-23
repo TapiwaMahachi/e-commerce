@@ -1,21 +1,19 @@
+### Afrex Website e-commerce
 
-#This website is designed for desktop only -not responsive 
+### Desktop Version only
 
-Please visit for live demo [afrex website](https://afrex-6f4a8.web.app)
+Please visit for live demo [afrex](https://afrex-6f4a8.web.app)
 
-## Tech Stacks Used
-Front end was designed using the following
+#### Tech Stack
 
-React
-JavaScript
-SCSS/CSS
-MaterialUi- for some forms and buttons
+###### front end
+-React 
+-used [material-ui](https://material-ui.com/)
+-[react-currency-formater](https://github.com/mohitgupta8888/react-currency-format#readme) for formatting currency.
 
-## Backend 
-Firebase - cloud firestore  data storage 
-Authentication  -  Email, Google, Apple and Facebook
-Payment - Stripe Paymnent 
+###### backend
 
-## deployment and hosting 
-Firebase 
+-Database, Authentication and deployment used [firebase](https://firebase.google.com/) 
+-Payment used [stripe](https://stripe.com/docs/api) API 
 
+ 

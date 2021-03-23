@@ -41,9 +41,6 @@ function AddShipping() {
      const handleSubmit = e =>{
          e.preventDefault();
 
-        //  if(val.name === null){
-        //      setVal({...val, name: `${val.firstname} ${val.lastname}`})
-        //  }
          //adding information to database from db base on user id;
           db.collection('users').doc(user.uid)
           .set({...val, isSet: true} , {merge:true});
@@ -66,7 +63,13 @@ function AddShipping() {
             db.collection('users').doc(user?.uid)
             .get().then(doc =>{
                 if(doc.exists)
-                    setVal({...val,...doc.data()})
+                    setVal(prev =>{
+                        return {...prev, ...doc.data()}
+                    })
+                    /*
+                    **functional state update based on previous result -  useState does not automatically merge update objects. 
+                    **You can replicate this behavior by combining the function updater form with object spread syntax:
+                    */
                 }
             ).catch(console.log)
         }

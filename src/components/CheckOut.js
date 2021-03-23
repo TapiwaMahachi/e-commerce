@@ -1,8 +1,9 @@
 import React from 'react'
-import { 
+import 
+{ 
   Stepper, Step, 
-  StepLabel, Button,
-  makeStyles, } from '@material-ui/core';
+  StepLabel, Button
+} from '@material-ui/core';
 import {  useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import '../css/_shipping.scss'
@@ -33,7 +34,7 @@ function CheckOut() {
         return "Error"
     }
   };
-
+ 
   return (
     <section className="checkout">
         <div className="checkout__main">
@@ -64,7 +65,10 @@ function CheckOut() {
                   <div className="checkout__buttons">
                     {
                       activeStep !== 0 && (
-                      <Button onClick={() => setActiveStep(activeStep - 1)} >
+                      <Button 
+                       className="back"
+                       onClick={() => setActiveStep(activeStep - 1)} 
+                      >
                         Back
                       </Button>)
                     }
@@ -74,7 +78,7 @@ function CheckOut() {
                       variant='contained'
                       onClick={() => setActiveStep(activeStep + 1)}
                     >
-                      {activeStep === steps.length - 1 ? 'Process payment' : 'Next'}
+                      {activeStep === steps.length - 1 ? 'Process Payment' : 'Next'}
                     </Button>
                   </div>
                 </div>

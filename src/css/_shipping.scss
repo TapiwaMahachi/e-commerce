@@ -28,19 +28,19 @@
     .shipping__title, .payment__title{
         padding: .5em;
     }
-    .checkout__productImg{
+    &__productImg{
         max-width: 150px;
         max-height: 150px;
         object-fit: contain;
         margin: .6em;
     }
-    .checkout__productContainer{
+    &__productContainer{
         display: flex;
         flex-direction: row;
         margin: .6em;
     
     }
-    .checkout__productCost{
+    &__productCost{
         display: flex;
         flex-direction: column;
     }
@@ -59,3 +59,4 @@
 .visible{
     visibility: visible;
 }
+

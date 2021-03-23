@@ -12,7 +12,6 @@ import Login from './components/Login';
 import {auth,db} from './firebase';
 import {useStateValue} from './StateProvider';
 import CheckOut from './components/CheckOut';
-import SecondaryHeder from './components/SecondaryHeder';
 import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
 
@@ -25,8 +24,8 @@ const stripePromise = loadStripe(
 
 const  App =()=> {
 
-  //get user
-  const [{user}, dispatch] = useStateValue();
+  //context to set user using dispatch
+  const [, dispatch] = useStateValue();
   //getting the user which is loged in 
   useEffect(() =>{
     const unsubscribe = auth.onAuthStateChanged((authUser) =>{
