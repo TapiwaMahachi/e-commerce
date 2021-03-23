@@ -6,10 +6,10 @@ Please visit for live demo [afrex](https://afrex-6f4a8.web.app)
 
 #### Tech Stack
 
- -React 
- -used [material-ui](https://material-ui.com/)
- -[react-currency-formater](https://github.com/mohitgupta8888/react-currency-format#readme) for formatting currency.
- -Database, Authentication and deployment used [firebase](https://firebase.google.com/) 
- -Payment used [stripe](https://stripe.com/docs/api) API 
+ - uses React  
+ - Uses [material-ui](https://material-ui.com/)
+ - Uses [react-currency-formater](https://github.com/mohitgupta8888/react-currency-format#readme) for formatting.
+ - Database NoSQL, Authentication and Deployment - [firebase](https://firebase.google.com/) 
+ - Uses [stripe](https://stripe.com/docs/api) API  for handling payments
 
  
