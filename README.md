@@ -6,7 +6,6 @@ Please visit live demo [afrex](https://afrex-6f4a8.web.app)
 
 #### Tech Stack
 
- - No transpilers, just vanilla javascript
  - ES2017 latest features like Async/Await
  - uses [React](https://reactjs.org/) Hooks to provide state manangement with an emphasis on clean, comprehensive and declarative codebase
  - Uses [create-react-app](https://create-react-app.dev/) to sets up the development environment with the latest JavaScript features and optimizes the  app for production.
