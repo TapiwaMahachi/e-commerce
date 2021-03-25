@@ -13,6 +13,7 @@ Please visit live demo [afrex](https://afrex-6f4a8.web.app)
  - Uses [Material-ui](https://material-ui.com/) a  React UI framework based material design
  - Uses [React-currency-formater](https://github.com/mohitgupta8888/react-currency-format#readme) for formatting.
  - Database NoSQL, Authentication and Deployment - [Firebase](https://firebase.google.com/) 
+ - [FirebaseUi auth](https://github.com/firebase/firebaseui-web-react) a  drop-in auth solution that handles the UI flows for signing in users with email addresses and passwords, and Identity Provider Sign In using Google, Facebook and others. 
  - Uses [Stripe](https://stripe.com/docs/api) API  for handling payments
 
  
